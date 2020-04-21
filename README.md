@@ -13,7 +13,7 @@
 
 ### Example:
 
-``` R
+```R
 library(RcppArmadillo)
 library(Rcpp)
 
@@ -27,7 +27,7 @@ lorenz(pay, n_bins = 100)
 
 Returns a matrix with income percentiles in `[,1]` and cumulative share of income in `[,2]`.
 
-``` R
+```R
           [,1]         [,2]
  [1,] 0.000001 2.370526e-09
  [2,] 0.000006 3.331201e-08
@@ -42,13 +42,13 @@ Returns a matrix with income percentiles in `[,1]` and cumulative share of incom
 ```
 
 
-
 ### Installation
 To use `lorenz`, install the following R packages:
  * [Rcpp](https://cran.r-project.org/web/packages/Rcpp/index.html) 
  * [RcppArmadillo](https://cran.r-project.org/web/packages/RcppArmadillo/index.html) 
 
 Put the source code (`lorenz.cpp`) in the directory of your R script. Then source it with the command `sourceCpp(lorenz.cpp)`.
+
 
 ### Performance
 
@@ -83,7 +83,7 @@ microbenchmark(
 
 Returns the following:
 
-```
+```R
 Unit: seconds
        expr      min       lq     mean   median       uq     max neval
  lorenz_cpp 1.280979 1.302514 1.310443 1.308688 1.311864 1.34817     5
