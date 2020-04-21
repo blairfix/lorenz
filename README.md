@@ -18,6 +18,7 @@ library(RcppArmadillo)
 library(Rcpp)
 
 sourceCpp("lorenz.cpp")
+
 pay = rlnorm(10^7, 1, 1)
 
 lorenz(pay, n_bins = 100)
@@ -55,8 +56,7 @@ The `lorenz` function calculates a limited number of points on the Lorenz curve.
 
 The main advantage of using a limited number of points is plotting speed. Plotting a Lorenz curve with several million points is slow. Plotting the same curve with a hundred points is fast. 
 
-Here's how `lorenz` stacks up against the similar
-`Lc` function in the [ineq](https://cran.r-project.org/web/packages/ineq/ineq.pdf) package:
+For big datasets, `lorenz` is about 10 times faster than the similar `Lc` function in the [ineq](https://cran.r-project.org/web/packages/ineq/ineq.pdf) package:
 
 
 ```R
@@ -65,15 +65,34 @@ library(Rcpp)
 library(ineq)
 library(microbenchmark)
 
+sourceCpp("lorenz.cpp")
+
 pay = rlnorm(10^7, 1, 1)
 
 microbenchmark(
-  lorenz = plot(lorenz(pay, 100)),
-  Lc = plot(Lc(pay)),
-  times = 10
+  lorenz_cpp =   plot(lorenz(pay, 100)),
+  times = 5
+)
+
+microbenchmark(
+  Lc_ineq = plot(Lc(pay)),
+  times = 5
 )
 
 ```
+
+Returns the following:
+
+```
+Unit: seconds
+       expr      min       lq     mean   median       uq     max neval
+ lorenz_cpp 1.280979 1.302514 1.310443 1.308688 1.311864 1.34817     5
+
+Unit: seconds
+    expr      min       lq     mean   median       uq      max neval
+ Lc_ineq 1.878216 16.79187 14.11446 17.06061 17.34391 17.49771     5
+```
+
 
 
 
