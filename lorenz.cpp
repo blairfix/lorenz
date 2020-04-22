@@ -44,7 +44,6 @@ arma::mat lorenz(   arma::vec pay,
         result(i, 1) = pay_counter / total_income;
     }
 
-
     return result;
 
 }
