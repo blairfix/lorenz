@@ -9,7 +9,7 @@
 * `n_bins` =  the number of desired points on the Lorenz curve
 
 ### Output
-`Lorenz` outputs a two-column matrix. Column 1 contains income percentiles. Column 2 contains the cumulative share of income.
+`lorenz` outputs a two-column matrix. Column 1 contains income percentiles. Column 2 contains the cumulative share of income.
 
 ### Example:
 
