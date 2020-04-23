@@ -47,7 +47,7 @@ To use `lorenz`, install the following R packages:
  * [Rcpp](https://cran.r-project.org/web/packages/Rcpp/index.html) 
  * [RcppArmadillo](https://cran.r-project.org/web/packages/RcppArmadillo/index.html) 
 
-Put the source code (`lorenz.cpp`) in the directory of your R script. Then source it with the command `sourceCpp(lorenz.cpp)`.
+Put the source code (`lorenz.cpp`) in the directory of your R script. Then source it with the command `sourceCpp("lorenz.cpp")`.
 
 
 ### Performance
